@@ -31,6 +31,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage>  with SingleTickerProviderStateMixin {
 
   late AnimationController animationController;
+  late Animation anime;
  // late AnimationController sizeAnimationController;
 
   int action = 1;
@@ -59,6 +60,9 @@ class _MyHomePageState extends State<MyHomePage>  with SingleTickerProviderState
       duration: Duration(seconds: 5),
     );
 
+
+    // https://api.flutter.dev/flutter/animation/Curves-class.html
+    anime = CurvedAnimation(parent: animationController, curve: Curves.elasticIn);
     //animation();
   }
 
@@ -75,7 +79,7 @@ class _MyHomePageState extends State<MyHomePage>  with SingleTickerProviderState
             Text("C-NON",
               style: TextStyle(
                   fontSize:
-                  action==2? animationController.value*100 : 100,
+                  action==2? anime.value*100 : 100,
                   //fontSize: animationController.value*100
                // color: Colors.orange.withOpacity(0.3),
                 color:
